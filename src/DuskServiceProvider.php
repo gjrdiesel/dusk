@@ -26,6 +26,15 @@ class DuskServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->runningInConsole()) {	
+             $this->commands([	
+                 Console\InstallCommand::class,	
+                 Console\DuskCommand::class,	
+                 Console\DuskFailsCommand::class,	
+                 Console\MakeCommand::class,	
+                 Console\PageCommand::class,	
+                 Console\ComponentCommand::class,	
+             ]);
+        }
     }
 }
